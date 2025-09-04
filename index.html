@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulado CNH - Nível 1: Mecânica</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Simulado CNH</h1>
+    <div id="user-form">
+      <label for="username">Digite seu nome:</label>
+      <input type="text" id="username" placeholder="Seu nome" />
+      <button id="start-btn">Iniciar Quiz</button>
+    </div>
+
+    <div id="quiz" class="hidden">
+      <div id="question"></div>
+      <div id="answers"></div>
+      <button id="next-btn" class="hidden">Próxima</button>
+    </div>
+
+    <div id="result" class="hidden">
+      <h2>Resultado</h2>
+      <p id="score"></p>
+      <p id="level-status"></p>
+      <h3>Ranking</h3>
+      <ul id="ranking"></ul>
+      <button onclick="location.reload()">Reiniciar</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
