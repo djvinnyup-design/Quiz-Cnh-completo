@@ -379,3 +379,20 @@ function renderRanking() {
 // Substitua estas linhas na função finishQuiz() ou adicione no final dela
 updateRanking(username, score, questions.length);
 renderRanking();
+// ===== Correção do Ranking =====
+
+// Calcula percentual do jogador no final do quiz
+let percentual = Math.round((score / totalQuestoes) * 100);
+
+// Salva no ranking com nome e percentual
+ranking.push({ nome: nomeJogador, percentual: percentual });
+
+// Ordena o ranking do maior para o menor
+ranking.sort((a, b) => b.percentual - a.percentual);
+
+// Mostra o ranking atualizado
+let rankingHTML = "<h3>Ranking</h3>";
+ranking.forEach((item, index) => {
+    rankingHTML += `${index + 1}. ${item.nome} - ${item.percentual}%<br>`;
+});
+document.getElementById("ranking").innerHTML = rankingHTML;
