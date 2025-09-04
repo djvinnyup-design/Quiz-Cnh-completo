@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz CNH - Nível 1 Mecânica</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulado CNH - Nível 1: Mecânica</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Manifest e Tema para PWA -->
   <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff">
+
 </head>
 <body>
-  <div class="container">
-    <h1>Quiz CNH - Nível 1: Mecânica</h1>
-    
-    <div class="user-input">
+  <div class="quiz-container">
+    <h1>Simulado CNH</h1>
+    <div id="user-form">
       <label for="username">Digite seu nome:</label>
-      <input type="text" id="username" placeholder="Seu nome">
-      <button id="startQuiz">Começar Quiz</button>
+      <input type="text" id="username" placeholder="Seu nome" />
+      <button id="start-btn">Iniciar Quiz</button>
     </div>
-    
+
     <div id="quiz" class="hidden">
-      <div id="progress">
-        <div id="progress-bar"></div>
-      </div>
       <div id="question"></div>
       <div id="answers"></div>
-      <button id="next" class="hidden">Próxima</button>
+      <button id="next-btn" class="hidden">Próxima</button>
     </div>
 
-    <div id="result" class="hidden"></div>
-
-    <div id="ranking" class="hidden">
-      <h2>Ranking</h2>
-      <ul id="ranking-list"></ul>
+    <div id="result" class="hidden">
+      <h2>Resultado</h2>
+      <p id="score"></p>
+      <p id="level-status"></p>
+      <h3>Ranking</h3>
+      <ul id="ranking"></ul>
+      <button onclick="location.reload()">Reiniciar</button>
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-          console.log('ServiceWorker registrado com sucesso:', registration.scope);
-        }, function(err) {
-          console.log('Falha ao registrar ServiceWorker:', err);
-        });
-      });
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker registrado!"))
+        .catch((err) => console.log("Erro no Service Worker:", err));
     }
   </script>
 </body>
