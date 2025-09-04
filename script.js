@@ -352,3 +352,30 @@ nextBtn.addEventListener('click', () => {
     checkLevelProgress(); // chama recompensa de nível
   }
 });
+// ==============================
+// CORREÇÃO DE RANKING E PERCENTUAL
+// ==============================
+
+// Função para atualizar o ranking corretamente
+function updateRanking(username, score, totalQuestions) {
+  const percent = Math.round((score / totalQuestions) * 100);
+  let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+  ranking.push({ name: username, percent });
+  ranking.sort((a, b) => b.percent - a.percent); // ordena do maior para o menor
+  localStorage.setItem("ranking", JSON.stringify(ranking));
+}
+
+// Função para exibir o ranking top 10
+function renderRanking() {
+  const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+  rankingEl.innerHTML = "";
+  ranking.slice(0, 10).forEach((r, i) => {
+    const li = document.createElement("li");
+    li.textContent = `${i + 1}. ${r.name} - ${r.percent}%`;
+    rankingEl.appendChild(li);
+  });
+}
+
+// Substitua estas linhas na função finishQuiz() ou adicione no final dela
+updateRanking(username, score, questions.length);
+renderRanking();
